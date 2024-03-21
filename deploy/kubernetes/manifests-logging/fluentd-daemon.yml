@@ -18,18 +18,18 @@ spec:
     spec:
       serviceAccountName: fluentd
       containers:
-       - image: weaveworksdemos/log-server
-         name: fluentd
-         env:
-         - name: FLUENTD_CONF
-           value: elk.conf
-         volumeMounts:
-         - name: varlibdockercontainers
-           mountPath: /var/lib/docker/containers
-           readOnly: true
+        - image: weaveworksdemos/log-server
+          name: fluentd
+          env:
+            - name: FLUENTD_CONF
+              value: elk.conf
+          volumeMounts:
+            - name: varlibdockercontainers
+              mountPath: /var/lib/docker/containers
+              readOnly: true
       volumes:
-      - name: varlibdockercontainers
-        hostPath:
-          path: /var/lib/docker/containers
+        - name: varlibdockercontainers
+          hostPath:
+            path: /var/lib/docker/containers
       nodeSelector:
-        beta.kubernetes.io/os: linux
+        kubernetes.io/os: linux

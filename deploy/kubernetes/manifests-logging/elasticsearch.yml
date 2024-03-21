@@ -17,13 +17,13 @@ spec:
         name: elasticsearch
     spec:
       containers:
-       - image: elasticsearch
-         name: elasticsearch
-         ports:
-          - name: elasticsearch
-            containerPort: 9200
+        - image: elasticsearch
+          name: elasticsearch
+          ports:
+            - name: elasticsearch
+              containerPort: 9200
       nodeSelector:
-        beta.kubernetes.io/os: linux
+        kubernetes.io/os: linux
 ---
 apiVersion: v1
 kind: Service
@@ -34,7 +34,7 @@ metadata:
   namespace: kube-system
 spec:
   ports:
-  - port: 9200
-    targetPort: 9200
+    - port: 9200
+      targetPort: 9200
   selector:
     name: elasticsearch
